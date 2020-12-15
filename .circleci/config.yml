@@ -1,0 +1,13 @@
+version: 2.1
+
+jobs:
+  docker:
+    image: circleci/node:latest
+  steps:
+    - setup_remote_docker:
+        version: 19.03.13
+    - run: 
+        name: Run Docker Container
+        command: |
+          docker run -d --name my-app nginx:latest
+          docker run --network container:my-app appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
