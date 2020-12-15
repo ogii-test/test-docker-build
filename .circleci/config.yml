@@ -10,5 +10,5 @@ jobs:
       - run: 
           name: Run Docker Container
           command: |
-            docker run -d --name my-app my-app
+            docker run -d --name my-app nginx
             docker exec my-app curl --retry 10 --retry-connrefused http://localhost:8080
